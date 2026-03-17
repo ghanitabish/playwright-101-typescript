@@ -1,17 +1,17 @@
 # Playwright 101 Assessment - TypeScript
 
-A TypeScript Playwright test automation project running on LambdaTest HyperExecute cloud grid.
+TypeScript Playwright test automation project running on LambdaTest HyperExecute cloud grid.
 
 ## Project Structure
 
 ```
-playwright-102-typescript/
+playwright-101-typescript/
 ├── tests/
 │   └── scenarios.spec.ts           # 3 test scenarios (TypeScript)
 ├── playwright.config.ts            # Playwright configuration
 ├── tsconfig.json                   # TypeScript configuration
 ├── package.json                    # NPM dependencies
-├── hyperexecute.yaml               # HyperExecute config (matrix, secrets, artifacts, caching)
+├── hyperexecute.yaml               # HyperExecute config (matrix, secrets, artifacts)
 ├── .github/
 │   └── workflows/
 │       └── hyperexecute.yml        # GitHub Actions CI pipeline
@@ -25,21 +25,21 @@ playwright-102-typescript/
 - Navigate to TestMu AI Selenium Playground
 - Click "Simple Form Demo"
 - Verify URL contains "simple-form-demo"
-- Fill message input field
-- Submit form
-- Validate success message with 4 fallback strategies
+- Enter "Welcome to TestMu AI" in the message text box
+- Click "Get Checked Value"
+- Validate the message appears in the "Your Message:" section
 
 ### 2. Drag & Drop Sliders
 - Navigate to "Drag & Drop Sliders"
-- Locate slider elements
-- Drag slider to 70% position
-- Verify slider moved with 7 detection strategies
+- Locate slider with default value 15
+- Set slider value to 95 using evaluate()
+- Validate the range value shows 95
 
-### 3. Full Form Submission
-- Fill all form fields (name, email, password, company, address, city, state, zip)
-- Uses environment variables and secrets for test data
-- Submit form
-- Validate success message
+### 3. Input Form Submit
+- Click "Submit" without filling fields and assert HTML5 validation message
+- Fill all form fields (name, email, password, company, website, address, city, state, zip)
+- Select "United States" from the Country drop-down
+- Submit form and validate success message
 
 ## Setup
 
@@ -89,7 +89,7 @@ Tests run in parallel across **4 browser/OS combinations**:
 | **Artifacts Management** | Collects `playwright-report/` and `test-results/` from all environments into downloadable artifacts on the dashboard |
 | **Secret Management** | `TEST_EMAIL` and `TEST_PASSWORD` are stored in the HyperExecute Secrets vault and injected at runtime |
 | **Environment Variables** | Non-sensitive config (`TEST_WEBSITE`, `TEST_NAME`, `TEST_COMPANY`, etc.) injected via the `env` block |
-| **Pre Steps & Dependency Caching** | `npm install` runs before tests; `node_modules` is cached across runs using `cacheKey` |
+| **Pre Steps** | `npm install` and `npx playwright install --with-deps` run before tests |
 | **Post Steps** | Confirmation echo after test execution |
 | **GitHub Actions** | CI pipeline triggers HyperExecute on push/PR to main branch |
 
