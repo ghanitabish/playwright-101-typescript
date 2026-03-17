@@ -1,0 +1,47 @@
+---
+version: 0.1
+globalTimeout: 90
+testSuiteTimeout: 90
+testSuiteStep: 90
+
+projectName: Playwright101AssessmentTS
+
+runson: ${matrix.os}
+parallelism: 2
+
+matrix:
+  os: [win, linux]
+
+pre:
+  - npm install
+  - npx playwright install --with-deps
+
+testSuites:
+  - npx playwright test --project=chromium --config=playwright.config.ts
+  - npx playwright test --project=firefox --config=playwright.config.ts
+
+post:
+  - echo "Test execution completed"
+
+uploadArtefacts:
+  - name: TestReport
+    path:
+      - playwright-report/**
+  - name: TestResults
+    path:
+      - test-results/**
+
+env:
+  TEST_WEBSITE: https://www.testmuai.com/selenium-playground/
+  TEST_NAME: Test User
+  TEST_COMPANY: Test Company
+  TEST_ADDRESS1: 123 Main Street
+  TEST_CITY: San Francisco
+  TEST_STATE: CA
+  TEST_ZIP: "94102"
+  PLAYWRIGHT_HTML_OPEN: never
+  CI: "true"
+
+secrets:
+  - TEST_EMAIL
+  - TEST_PASSWORD

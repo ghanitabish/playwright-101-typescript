@@ -1,0 +1,22 @@
+{
+  "tests": [
+    {
+      "test": "Scenario 1: Simple Form Demo",
+      "suite": "scenarios.spec",
+      "file": "tests/scenarios.spec.ts",
+      "line": 12
+    },
+    {
+      "test": "Scenario 2: Drag & Drop Sliders",
+      "suite": "scenarios.spec",
+      "file": "tests/scenarios.spec.ts",
+      "line": 61
+    },
+    {
+      "test": "Scenario 3: Input Form Submit",
+      "suite": "scenarios.spec",
+      "file": "tests/scenarios.spec.ts",
+      "line": 100
+    }
+  ]
+}
